@@ -117,12 +117,11 @@ void CMainWindowImpl::refreshAboutVersion()
 #if defined(ABOUT_PAGE_APP_NAME)
     _json_obj["appname"]    = ABOUT_PAGE_APP_NAME;
 #else
-    // _json_obj["appname"]    = WINDOW_NAME;
-    _json_obj["appname"]    = "Euro-Office Desktop Editors";
+    _json_obj["appname"]    = WINDOW_NAME;
 #endif
     _json_obj["rights"]     = ABOUT_COPYRIGHT_STR;
     _json_obj["link"]       = URL_SITE;
-//    _json_obj["changelog"]  = "https://github.com/ONLYOFFICE/DesktopEditors/blob/master/CHANGELOG.md";
+    _json_obj["changelog"]  = RELEASE_NOTES;
 
     QString _package = QSettings(qApp->applicationDirPath() + "/converter/package.config", QSettings::IniFormat).value("package").toString();
     if ( !_package.isEmpty() )

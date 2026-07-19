@@ -6,7 +6,7 @@
 #define sIntProductName                 "DesktopEditors"
 #define sAppName                        str(sCompanyName)
 #define sPackageName                    str(sIntCompanyName + "-" + sIntProductName)
-#define sAppPublisher                   "AfriOffice"
+#define sAppPublisher                   "Personal Office"
 #define sAppPublisherURL                "https://github.com/Euro-Office/"
 #define sAppSupportURL                  "https://github.com/Euro-Office/DesktopEditors/issues"
 #define sAppCopyright                   str("© " + sAppPublisher + " " + GetDateTimeString("yyyy",,) + ". All rights reserved.")

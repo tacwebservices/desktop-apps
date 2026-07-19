@@ -60,8 +60,8 @@
 
 #define VER_FILEDESCRIPTION_STR     "Personal Office Editors\0"
 #define VER_PRODUCTNAME_STR         "Personal Office Editors\0"
-#define VER_COMPANYNAME_STR         "AfriOffice\0"
-#define VER_LEGALCOPYRIGHT_STR      "© AfriOffice " TO_STR(COPYRIGHT_YEAR) ". All rights reserved.\0"
+#define VER_COMPANYNAME_STR         "Personal Office\0"
+#define VER_LEGALCOPYRIGHT_STR      "© Personal Office " TO_STR(COPYRIGHT_YEAR) ". All rights reserved.\0"
 #define VER_COMPANYDOMAIN_STR       "https://github.com/Euro-Office\0"
 
 #define VER_INTERNALNAME_STR        "AppIcons\0"
