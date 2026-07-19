@@ -27,7 +27,7 @@ window.DialogConnect = function(params) {
     "use strict";
 
     !params && (params = {});
-    !params.provider && (params.provider = 'onlyoffice');
+    !params.provider && (params.provider = 'nextcloud');
 
     let $el, $title, $body;
     var _events = { close: params.onclose };
@@ -223,7 +223,7 @@ window.DialogConnect = function(params) {
     };
 
     function _require_portal_info(portal, provider) {
-        !provider && (provider = 'onlyoffice');
+        !provider && (provider = 'nextcloud');
         const _model = config.portals.checklist.find(i => i.provider == provider);
         let _url;
         if ( _model )
@@ -295,8 +295,8 @@ window.DialogConnect = function(params) {
 
             let $combo = $el.find('select');
             let _clouds = config.portals.checklist;
-            if ( _clouds.length == 1 && _clouds[0].provider == 'onlyoffice' ) {
-                $combo.append(`<option value='onlyoffice'>onlyoffice</option>`);
+            if ( _clouds.length == 1 ) {
+                $combo.append(`<option value='${_clouds[0].provider}'>${_clouds[0].name}</option>`);
                 $combo.parents('.select-field').hide();
             } else {
                 for (let c of _clouds) {
@@ -313,9 +313,9 @@ window.DialogConnect = function(params) {
                 }
                 $combo.val(params.provider);
 
-                let $newportal = $el.find('.newportal').disable(!(params.provider=='onlyoffice'));
+                let $newportal = $el.find('.newportal').disable(!(params.provider=='nextcloud'));
                 $combo.on('change', e => {
-                    $newportal.disable(!(e.target.value=='onlyoffice'));
+                    $newportal.disable(!(e.target.value=='nextcloud'));
                     _clear_error();
                 });
 

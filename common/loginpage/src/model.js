@@ -227,7 +227,7 @@ function PortalModel(attributes) {
     this.logged = false;
     this.user   = attributes.user || '';
     this.email  = attributes.email || '';
-    this.provider = _back_compat_provider(attributes.provider) || 'onlyoffice';
+    this.provider = _back_compat_provider(attributes.provider) || 'nextcloud';
 };
 
 PortalModel.prototype = Object.create(Model.prototype); /*new Model();*/

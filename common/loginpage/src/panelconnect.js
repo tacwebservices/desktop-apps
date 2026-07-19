@@ -479,7 +479,7 @@
                 }
 
 
-                !obj.provider && (obj.provider = 'onlyoffice');
+                !obj.provider && (obj.provider = 'nextcloud');
                 if ( !config.portals.checklist.find(i => i.provider == obj.provider) ) {
                     let _p = config.portals.checklist.find(i => i.name.toLowerCase() == obj.provider.toLowerCase());
                     if ( _p )
