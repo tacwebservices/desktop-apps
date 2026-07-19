@@ -105,7 +105,7 @@ $InnoArgs = "/DVERSION=$Version",
 if ($BrandingDir) {
     $InnoArgs += "/DBRANDING_DIR=$BrandingDir"
 }
-if ($CompanyName -eq "Euro-Office") {
+if ($CompanyName -eq "Euro-Office" -or $CompanyName -eq "Personal Office") {
     $InnoArgs += "/D_EuroOffice"
 }
 switch ($Target) {

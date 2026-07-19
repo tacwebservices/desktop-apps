@@ -1,18 +1,18 @@
-; -- Euro-Office Desktop Editors Defines --
+; -- Personal Office Desktop Editors Defines --
 
-#define sCompanyName                    "Euro-Office"
+#define sCompanyName                    "Personal Office"
 #define sIntCompanyName                 sCompanyName
 #define sProductName                    "Desktop Editors"
 #define sIntProductName                 "DesktopEditors"
 #define sAppName                        str(sCompanyName)
 #define sPackageName                    str(sIntCompanyName + "-" + sIntProductName)
-#define sAppPublisher                   "Ascensio System SIA"
-#define sAppPublisherURL                "https://www.onlyoffice.com/"
-#define sAppSupportURL                  "https://www.onlyoffice.com/support.aspx"
+#define sAppPublisher                   "AfriOffice"
+#define sAppPublisherURL                "https://github.com/Euro-Office/"
+#define sAppSupportURL                  "https://github.com/Euro-Office/DesktopEditors/issues"
 #define sAppCopyright                   str("© " + sAppPublisher + " " + GetDateTimeString("yyyy",,) + ". All rights reserved.")
-#define sAppIconName                    "Euro-Office"
-#define sOldAppIconName                 "Euro-Office Editors"
-#define sAppProtocol                    'oo-office'
+#define sAppIconName                    "Personal Office"
+#define sOldAppIconName                 "Personal Office Editors"
+#define sAppProtocol                    'personaloffice'
 
 #define APP_PATH                        str(sIntCompanyName + "\" + sIntProductName)
 #define UPD_PATH                        str(sIntProductName + "Updates")
@@ -25,8 +25,8 @@
 #define iconsExe                        "DesktopEditors.exe"
 #define NAME_EXE_OUT                    "editors.exe"
 
-#define ASSC_APP_NAME                   "Euro-Office"
+#define ASSC_APP_NAME                   "Personal Office"
 #define ASCC_REG_PREFIX                 "ASC"
-#define ASCC_REG_REGISTERED_APP_NAME    "Euro-Office Editors"
+#define ASCC_REG_REGISTERED_APP_NAME    "Personal Office Editors"
 #define ASSOC_PROG_ID                   "ASC.Editors"
-#define ASSOC_APP_FRIENDLY_NAME         "Euro-Office Editors"
+#define ASSOC_APP_FRIENDLY_NAME         "Personal Office Editors"
