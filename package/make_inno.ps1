@@ -92,6 +92,8 @@ if ($Target -notlike "*update" -and $Target -notlike "xp*") {
     $OllamaUrl = "https://ollama.com/download/OllamaSetup.exe"
     if (-not (Test-Path "$Ollama")) {
         Write-Host "DOWNLOAD: $OllamaUrl"
+        # GitHub, where the download redirects, needs TLS 1.2
+        [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
         $WebClient = New-Object System.Net.WebClient
         $WebClient.DownloadFile($OllamaUrl, "$Ollama")
     }
