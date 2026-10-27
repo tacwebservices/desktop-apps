@@ -69,6 +69,9 @@ ur.PrevVer={#sAppName} کے پچھلے ورژن کا پتہ چلا، براہ ک
 #endif
 ;======================================================================================================
 en.Launch =Launch %1
+InstallOllama =Installing Ollama, the AI engine for the offline assistant. Please wait...
+TaskOllama =Install Ollama, which runs the AI assistant on this computer (the AI model downloads once, on first use)
+TaskOllamaGroup =AI assistant:
 en_GB.Launch =Launch %1
 ar_SA.Launch =بدء تشغيل %1
 bg.Launch =Пускане %1

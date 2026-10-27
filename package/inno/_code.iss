@@ -104,6 +104,17 @@ begin
 #endif
 end;
 
+// Ollama installs per user, under the user's local programs folder.
+function OllamaPath(): String;
+begin
+  Result := ExpandConstant('{localappdata}\Programs\Ollama');
+end;
+
+function CheckOllama(): Boolean;
+begin
+  Result := FileExists(OllamaPath() + '\ollama.exe');
+end;
+
 function ReadBinFile(fileName: String; list: TStringList): Boolean;
 var
   fs: TFileStream;
@@ -1080,6 +1091,21 @@ begin
   Params := '/quiet /norestart';
 
   ShellExec('', FileName, Params, '', SW_SHOW, ewWaitUntilTerminated, ErrorCode);
+
+  WizardForm.StatusLabel.Caption := SetupMessage(msgStatusExtractFiles);
+end;
+
+// Installs Ollama silently as the user who started setup (not the
+// administrator account setup may run as), then starts it in the background.
+procedure installOllama(FileName, LabelCaption: String);
+var
+  ErrorCode: Integer;
+begin
+  if Length(LabelCaption) > 0 then WizardForm.StatusLabel.Caption := LabelCaption;
+
+  ExecAsOriginalUser(FileName, '/VERYSILENT /NORESTART /SUPPRESSMSGBOXES', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
+  if FileExists(OllamaPath() + '\ollama app.exe') then
+    ExecAsOriginalUser(OllamaPath() + '\ollama app.exe', '', '', SW_HIDE, ewNoWait, ErrorCode);
 
   WizardForm.StatusLabel.Caption := SetupMessage(msgStatusExtractFiles);
 end;

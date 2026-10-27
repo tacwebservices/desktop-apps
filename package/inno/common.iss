@@ -198,6 +198,12 @@ Source: "vc_redist.{#ARCH}.exe"; DestDir: {app}; Flags: deleteafterinstall; \
   AfterInstall: installVCRedist(ExpandConstant('{app}\vc_redist.{#ARCH}.exe'), ExpandConstant('{cm:InstallAdditionalComponents}')); \
   Check: not CheckVCRedist;
 
+; Ollama runs the AI assistant (Ask / Write with Personal Office) on this computer.
+; Its own installer is per user, so it runs as the user who started setup.
+#ifndef _WIN_XP
+Source: "OllamaSetup.exe"; DestDir: {app}; Flags: deleteafterinstall;   AfterInstall: installOllama(ExpandConstant('{app}\OllamaSetup.exe'), ExpandConstant('{cm:InstallOllama}'));   Tasks: ollama; Check: not CheckOllama;
+#endif
+
 Source: "{#BUILD_DIR}\desktop\*"; DestDir: {app}; Flags: ignoreversion recursesubdirs;
 #if defined(_WIN_XP) | defined(EMBED_HELP)
 Source: "{#BUILD_DIR}\help\*"; DestDir: {app}; Flags: ignoreversion recursesubdirs;
@@ -219,6 +225,9 @@ Type: files; Name: "{group}\{#sOldAppIconName}.lnk";
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon,{#sAppName}}; GroupDescription: {cm:AdditionalIcons};
+#ifndef _WIN_XP
+Name: ollama; Description: {cm:TaskOllama}; GroupDescription: {cm:TaskOllamaGroup}; Check: not CheckOllama;
+#endif
 ;Name: fileassoc; Description: {cm:AssociateCaption};   GroupDescription: {cm:AssociateDescription};
 
 

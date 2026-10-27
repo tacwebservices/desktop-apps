@@ -84,6 +84,22 @@ if ($Target -notlike "*update") {
     if (-not (Get-Item $VCRedist).VersionInfo.ProductVersion) { throw }
 }
 
+if ($Target -notlike "*update" -and $Target -notlike "xp*") {
+    Write-Host "`n[ Download Ollama ]"
+
+    # The AI assistant runs on Ollama; the installer offers to install it
+    $Ollama = "inno\OllamaSetup.exe"
+    $OllamaUrl = "https://ollama.com/download/OllamaSetup.exe"
+    if (-not (Test-Path "$Ollama")) {
+        Write-Host "DOWNLOAD: $OllamaUrl"
+        $WebClient = New-Object System.Net.WebClient
+        $WebClient.DownloadFile($OllamaUrl, "$Ollama")
+    }
+
+    Write-Host "Version: $((Get-Item $Ollama).VersionInfo.ProductVersion)"
+    if (-not (Get-Item $Ollama).VersionInfo.ProductVersion) { throw }
+}
+
 ####
 
 Push-Location "inno"
