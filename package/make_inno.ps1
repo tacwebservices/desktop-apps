@@ -95,7 +95,9 @@ if ($Target -notlike "*update" -and $Target -notlike "xp*") {
         # GitHub, where the download redirects, needs TLS 1.2
         [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
         $WebClient = New-Object System.Net.WebClient
-        $WebClient.DownloadFile($OllamaUrl, "$Ollama")
+        # Saved under another name first, so an interrupted download is not taken for a whole one
+        $WebClient.DownloadFile($OllamaUrl, "$Ollama.part")
+        Move-Item "$Ollama.part" "$Ollama"
     }
 
     Write-Host "Version: $((Get-Item $Ollama).VersionInfo.ProductVersion)"
