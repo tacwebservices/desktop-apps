@@ -151,8 +151,19 @@ if ($Debug) {
     $InnoArgs += "/DPREPROCSAVE"
 }
 
+# Some bundled templates have very long names; under a deep checkout their
+# paths pass the 260-character limit. A short junction to the build folder
+# keeps them under it.
+$ShortBuildDir = "$env:TEMP\po-build-$Arch"
+if (Test-Path $ShortBuildDir) { cmd /c rmdir "$ShortBuildDir" }
+$FullBuildDir = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $BuildDir))
+New-Item -ItemType Junction -Path $ShortBuildDir -Target $FullBuildDir | Out-Null
+$InnoArgs += "/DBUILD_DIR=$ShortBuildDir"
+
 Write-Host "iscc $InnoArgs $IssFile"
 & iscc $InnoArgs $IssFile
-if ($LastExitCode -ne 0) { throw }
+$IsccExitCode = $LastExitCode
+cmd /c rmdir "$ShortBuildDir"
+if ($IsccExitCode -ne 0) { throw }
 
 Pop-Location
